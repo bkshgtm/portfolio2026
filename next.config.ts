@@ -1,0 +1,13 @@
+import type { NextConfig } from 'next'
+
+const nextConfig: NextConfig = {
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'framer-motion'],
+  },
+  images: {
+    formats: ['image/avif', 'image/webp'],
+    qualities: [75, 90, 92],
+  },
+}
+
+export default nextConfig
