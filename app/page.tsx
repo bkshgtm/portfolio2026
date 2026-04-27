@@ -80,10 +80,27 @@ export default function HomePage() {
   return (
     <>
       {/* ── HERO ──────────────────────────────────────────────────── */}
-      <section className="min-h-screen border-b border-white/[0.04] overflow-hidden">
-        <div className="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-[2fr_3fr] min-h-screen">
+      <section className="border-b border-white/[0.04] overflow-hidden">
+        {/* Mobile portrait — full-width banner */}
+        <div className="relative lg:hidden w-full overflow-hidden" style={{ height: '72vw', maxHeight: '420px' }}>
+          <Image
+            src="/headshot.png"
+            alt="Bikash Gautam"
+            fill
+            unoptimized
+            priority
+            className="object-cover object-[center_15%]"
+            sizes="100vw"
+          />
+          {/* fade into background at bottom */}
+          <div className="absolute inset-0 pointer-events-none" style={{
+            background: 'linear-gradient(to bottom, #080808 0%, transparent 22%, transparent 55%, #080808 100%)',
+          }} />
+        </div>
 
-          {/* Left – portrait */}
+        <div className="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-[2fr_3fr] lg:min-h-screen">
+
+          {/* Desktop portrait */}
           <div className="relative hidden lg:block overflow-hidden">
             <Image
               src="/headshot.png"
@@ -97,8 +114,8 @@ export default function HomePage() {
             <div className="absolute inset-0 pointer-events-none" style={edgeFade} />
           </div>
 
-          {/* Right – content */}
-          <div className="flex flex-col items-center justify-center px-8 lg:px-16 gap-14">
+          {/* Content */}
+          <div className="flex flex-col items-center lg:justify-center px-8 lg:px-16 gap-12 pt-10 pb-16 lg:pt-0 lg:pb-0">
 
             {/* Tech stack grid */}
             <motion.div initial="hidden" animate="visible" variants={stagger}>
